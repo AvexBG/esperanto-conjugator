@@ -29,7 +29,7 @@ public class FrameClass extends JFrame implements ActionListener {
 //		JPanel futureTensePanel;
 		JPanel buttonPanel;
 		
-		wordLabel = new JLabel("Word");
+		wordLabel = new JLabel("Infinitive Verb: ");
 		
 		wordTextField = new JTextField(20);
 		
@@ -94,6 +94,9 @@ public class FrameClass extends JFrame implements ActionListener {
 				String word = wordTextField.getText();
 				String suffix = "as";
 				
+				System.out.println("---Present Tense---");
+
+				
 				conjugate(word, suffix);
 			}
 		}
@@ -106,6 +109,9 @@ public class FrameClass extends JFrame implements ActionListener {
 			else {
 				String word = wordTextField.getText();
 				String suffix = "is";
+				
+				System.out.println("---Past Tense---");
+
 				
 				conjugate(word, suffix);
 			}
@@ -120,6 +126,9 @@ public class FrameClass extends JFrame implements ActionListener {
 				String word = wordTextField.getText();
 				String suffix = "os";
 				
+				System.out.println("---Future Tense---");
+
+				
 				conjugate(word, suffix);
 			}
 		}
@@ -133,6 +142,8 @@ public class FrameClass extends JFrame implements ActionListener {
 				String word = wordTextField.getText();
 				String suffix = "us";
 				
+				System.out.println("---Conditional Tense---");
+				
 				conjugate(word, suffix);
 			}
 		}
@@ -145,6 +156,9 @@ public class FrameClass extends JFrame implements ActionListener {
 			else {
 				String word = wordTextField.getText();
 				String suffix = "u";
+				
+				System.out.println("---Volitive Tense---");
+
 				
 				conjugate(word, suffix);
 			}
