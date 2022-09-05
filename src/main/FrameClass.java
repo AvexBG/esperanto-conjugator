@@ -86,120 +86,81 @@ public class FrameClass extends JFrame implements ActionListener {
 		
 		if (e.getActionCommand().equals("PRESENT")) {
 			
-			presentConjugate();
+			if (wordTextField.getText().equals("")) {
+				
+				System.out.println("Empty! Please enter a verb in the infinitive form.");
+			}
+			else {
+				String word = wordTextField.getText();
+				String suffix = "as";
+				
+				conjugate(word, suffix);
+			}
 		}
 		else if (e.getActionCommand().equals("PAST")) {
 			
-			pastConjugate();
+			if (wordTextField.getText().equals("")) {
+				
+				System.out.println("Empty! Please enter a verb in the infinitive form.");
+			}
+			else {
+				String word = wordTextField.getText();
+				String suffix = "is";
+				
+				conjugate(word, suffix);
+			}
 		}	
 		else if (e.getActionCommand().equals("FUTURE")) {
 			
-			futureConjugate();
+			if (wordTextField.getText().equals("")) {
+				
+				System.out.println("Empty! Please enter a verb in the infinitive form.");
+			}
+			else {
+				String word = wordTextField.getText();
+				String suffix = "os";
+				
+				conjugate(word, suffix);
+			}
 		}
 		else if (e.getActionCommand().equals("CONDITIONAL")) {
 			
-			conditionalConjugate();
+			if (wordTextField.getText().equals("")) {
+				
+				System.out.println("Empty! Please enter a verb in the infinitive form.");
+			}
+			else {
+				String word = wordTextField.getText();
+				String suffix = "us";
+				
+				conjugate(word, suffix);
+			}
 		}
 		else if (e.getActionCommand().equals("VOLITIVE")) {
 			
-			volitiveConjugate();
+			if (wordTextField.getText().equals("")) {
+				
+				System.out.println("Empty! Please enter a verb in the infinitive form.");
+			}
+			else {
+				String word = wordTextField.getText();
+				String suffix = "u";
+				
+				conjugate(word, suffix);
+			}
 		}
 	}
 
-	private void presentConjugate() {
-		
-		if (wordTextField.getText().equals("")) {
-			System.out.println("Empty! Please enter a verb in the infinitive form.");
-		}
-		else {
-			String word = wordTextField.getText();
-			String presentSuffix = "as";
+	private void conjugate(String word, String suffix) {
 			
-			removeLastChar(word);
+		removeLastChar(word);
 			
-			String newWord = removeLastChar(word).concat(presentSuffix);
+		String newWord = removeLastChar(word).concat(suffix);
 
-			System.out.println("---Present Tense---");
 			System.out.println("Infinitive: " + word);
 			System.out.println("Conjugated: " + newWord + "\n");
-		}
-	}
-	
-	private void pastConjugate() {
-		
-		if (wordTextField.getText().equals("")) {
-			System.out.println("Empty! Please enter a verb in the infinitive form.");
-		}
-		else {
-			String word = wordTextField.getText();
-			String pastSuffix = "is";
-
-			removeLastChar(word);
-			
-			String newWord = removeLastChar(word).concat(pastSuffix);
-			
-			System.out.println("---Past Tense---");
-			System.out.println("Infinitive: " + word);
-			System.out.println("Conjugated: " + newWord + "\n");
-		}
-	}
-	
-	private void futureConjugate() {
-
-		if (wordTextField.getText().equals("")) {
-			System.out.println("Empty! Please enter a verb in the infinitive form.");
-		}
-		else {
-			String word = wordTextField.getText();
-			String futureSuffix = "os";
-			
-			removeLastChar(word);
-			
-			String newWord = removeLastChar(word).concat(futureSuffix);
-			
-			System.out.println("---Future Tense---");
-			System.out.println("Infinitive: " + word);
-			System.out.println("Conjugated: " + newWord + "\n");
-		}
 	}
 
-	private void conditionalConjugate() {
-		
-		if (wordTextField.getText().equals("")) {
-			System.out.println("Empty! Please enter a verb in the infinitive form.");
-		}
-		else {
-			String word = wordTextField.getText();
-			String futureSuffix = "us";
-			
-			removeLastChar(word);
-			
-			String newWord = removeLastChar(word).concat(futureSuffix);
-			
-			System.out.println("---Conditional Tense---");
-			System.out.println("Infinitive: " + word);
-			System.out.println("Conjugated: " + newWord + "\n");
-		}
-	}
-	
-	private void volitiveConjugate() {
-		
-		if (wordTextField.getText().equals("")) {
-			System.out.println("Empty! Please enter a verb in the infinitive form.");
-		}
-		else {
-			String word = wordTextField.getText();
-			String futureSuffix = "u";
-			
-			removeLastChar(word);
-			
-			String newWord = removeLastChar(word).concat(futureSuffix);
-			
-			System.out.println("---Volitive Tense---");
-			System.out.println("Infinitive: " + word);
-			System.out.println("Conjugated: " + newWord + "\n");
-		}
-	}
 	
 	private String removeLastChar(String word) {
 
