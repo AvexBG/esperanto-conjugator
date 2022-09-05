@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.InputStream;
@@ -9,12 +10,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class FrameClass extends JFrame implements ActionListener {
 
 	JLabel wordLabel;
 	JTextField wordTextField;
+	JTextArea outputTextArea;
 	
 	JButton presentButton;
 	JButton pastButton;
@@ -24,14 +27,22 @@ public class FrameClass extends JFrame implements ActionListener {
 	
 	FrameClass() {
 		JPanel textFieldPanel;
+		JPanel outputPanel;
 //		JPanel presentTensePanel;
 //		JPanel pastTensePanel;
 //		JPanel futureTensePanel;
 		JPanel buttonPanel;
 		
 		wordLabel = new JLabel("Infinitive Verb: ");
+		wordLabel.setFont(wordLabel.getFont().deriveFont(40.0f));
 		
 		wordTextField = new JTextField(20);
+		Font newTextFieldFont = new Font(wordTextField.getFont().getName(), wordTextField.getFont().getStyle(), 30);
+		wordTextField.setFont(newTextFieldFont);
+		
+		outputTextArea = new JTextArea();
+		outputTextArea.setFont(newTextFieldFont);
+
 		
 		// setting up buttons
 		presentButton = new JButton("Present Tense");
@@ -59,6 +70,9 @@ public class FrameClass extends JFrame implements ActionListener {
 		textFieldPanel.add(wordLabel);
 		textFieldPanel.add(wordTextField);
 		
+		outputPanel = new JPanel();
+		outputPanel.add(outputTextArea);
+		
 		buttonPanel = new JPanel();
 		buttonPanel.add(presentButton);
 		buttonPanel.add(pastButton);
@@ -66,7 +80,8 @@ public class FrameClass extends JFrame implements ActionListener {
 		buttonPanel.add(conditionalButton);
 		buttonPanel.add(volitiveButton);
 		
-		add(textFieldPanel, BorderLayout.CENTER);
+		add(textFieldPanel, BorderLayout.NORTH);
+//		add(outputPanel, BorderLayout.CENTER);
 		add(buttonPanel, BorderLayout.SOUTH);
 		
 		setupMainFrame();
@@ -75,8 +90,8 @@ public class FrameClass extends JFrame implements ActionListener {
 	void setupMainFrame() {
 		
 		setTitle("Conjugator");
-		setSize(800, 600);
-		setResizable(false);
+		setSize(900, 600);
+		setResizable(true);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -86,81 +101,63 @@ public class FrameClass extends JFrame implements ActionListener {
 		
 		if (e.getActionCommand().equals("PRESENT")) {
 			
-			if (wordTextField.getText().equals("")) {
-				
-				System.out.println("Empty! Please enter a verb in the infinitive form.");
-			}
-			else {
-				String word = wordTextField.getText();
-				String suffix = "as";
-				
-				System.out.println("---Present Tense---");
-
-				
-				conjugate(word, suffix);
-			}
+			processText(1);
 		}
 		else if (e.getActionCommand().equals("PAST")) {
 			
-			if (wordTextField.getText().equals("")) {
-				
-				System.out.println("Empty! Please enter a verb in the infinitive form.");
-			}
-			else {
-				String word = wordTextField.getText();
-				String suffix = "is";
-				
-				System.out.println("---Past Tense---");
-
-				
-				conjugate(word, suffix);
-			}
+			processText(2);
 		}	
 		else if (e.getActionCommand().equals("FUTURE")) {
 			
-			if (wordTextField.getText().equals("")) {
-				
-				System.out.println("Empty! Please enter a verb in the infinitive form.");
-			}
-			else {
-				String word = wordTextField.getText();
-				String suffix = "os";
-				
-				System.out.println("---Future Tense---");
-
-				
-				conjugate(word, suffix);
-			}
+			processText(3);
 		}
 		else if (e.getActionCommand().equals("CONDITIONAL")) {
 			
-			if (wordTextField.getText().equals("")) {
-				
-				System.out.println("Empty! Please enter a verb in the infinitive form.");
-			}
-			else {
-				String word = wordTextField.getText();
-				String suffix = "us";
-				
-				System.out.println("---Conditional Tense---");
-				
-				conjugate(word, suffix);
-			}
+			processText(4);
 		}
 		else if (e.getActionCommand().equals("VOLITIVE")) {
 			
-			if (wordTextField.getText().equals("")) {
-				
-				System.out.println("Empty! Please enter a verb in the infinitive form.");
-			}
-			else {
-				String word = wordTextField.getText();
-				String suffix = "u";
-				
-				System.out.println("---Volitive Tense---");
+			processText(5);
+		}
+	}
 
-				
-				conjugate(word, suffix);
+	private void processText(int x) {
+
+		if (wordTextField.getText().equals("")) {
+			
+			System.out.println("Empty! Please enter a verb in the infinitive form.");
+		}
+		else {
+			String word = wordTextField.getText();
+			
+			switch(x) {
+				case 1:
+					System.out.println("---Present Tense---");
+					String presentSuffix = "as";
+					conjugate(word, presentSuffix);
+					break;
+				case 2:
+					System.out.println("---Past Tense---");
+					String pastSuffix = "is";
+					conjugate(word, pastSuffix);
+					break;
+				case 3:
+					System.out.println("---Future Tense---");
+					String futureSuffix = "os";
+					conjugate(word, futureSuffix);
+					break;
+				case 4:
+					System.out.println("---Conditional Tense---");
+					String conditionalSuffix = "us";
+					conjugate(word, conditionalSuffix);
+					break;
+				case 5:
+					System.out.println("---Volitive Tense---");
+					String volitiveSuffix = "u";
+					conjugate(word, volitiveSuffix);
+					break;
+				default:
+					break;
 			}
 		}
 	}
