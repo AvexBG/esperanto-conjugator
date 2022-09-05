@@ -171,8 +171,8 @@ public class FrameClass extends JFrame implements ActionListener {
 			
 		String newWord = removeLastChar(word).concat(suffix);
 
-			System.out.println("Infinitive: " + word);
-			System.out.println("Conjugated: " + newWord + "\n");
+		System.out.println("Infinitive: " + word);
+		System.out.println("Conjugated: " + newWord + "\n");
 	}
 
 	
